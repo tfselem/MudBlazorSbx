@@ -1,0 +1,34 @@
+﻿@page "/"
+@using MudBlazorSbx.Client.Components
+
+<MudDataGrid T="Model" Items="_items" Height="70vh" FixedHeader="true">
+    <Columns>
+        @foreach (int column in Enumerable.Range(0, 50)) {
+            <PropertyColumn Title=@($"Column {column}") Property="x => x.Row">
+                <CellTemplate>
+                    <InCellEditor Value=@($"Cell {column}x{context.Item.Row}") />
+                </CellTemplate>
+            </PropertyColumn>
+        }
+    </Columns>
+</MudDataGrid>
+
+<style>
+    .frozen-column-1 {
+        min-width: 150px;
+        width: 150px;
+    }
+
+    .frozen-column-2 {
+        min-width: 150px;
+        width: 150px;
+        left: 150px !important;
+    }
+</style>
+
+@code {
+    IEnumerable<Model> _items = Enumerable.Range(0, 100).Select(x => new Model($"{x}"));
+    List<List<ElementReference>> EditableFieldsLookup { get; set; } = null!;
+    ElementReference DivRef;
+    record Model(string Row);
+}

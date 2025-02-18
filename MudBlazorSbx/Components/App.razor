@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href=@Assets["_content/MudBlazor/MudBlazor.min.css"] rel="stylesheet" />
+    <ImportMap />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <HeadOutlet @rendermode="new InteractiveWebAssemblyRenderMode(prerender: false)" />
+</head>
+
+<body>
+    <Routes @rendermode="new InteractiveWebAssemblyRenderMode(prerender: false)" />
+    <script type="text/javascript">
+        function focusAdjacentCell(elementId, direction) {
+            // Get the element by ID
+            const element = document.getElementById(elementId);
+
+            if (!element) {
+                return;
+            }
+
+            // Get the parent table cell
+            const cell = element.closest('td');
+            if (!cell) {
+                console.error("The element is not inside a table cell.");
+                return null;
+            }
+
+            let adjacentCell;
+            switch (direction) {
+                case 'up':
+                    adjacentCell = cell.parentElement.previousElementSibling ? cell.parentElement.previousElementSibling.children[cell.cellIndex] : null;
+                    break;
+                case 'down':
+                    adjacentCell = cell.parentElement.nextElementSibling ? cell.parentElement.nextElementSibling.children[cell.cellIndex] : null;
+                    break;
+                case 'left':
+                    adjacentCell = cell.previousElementSibling;
+                    break;
+                case 'right':
+                    adjacentCell = cell.nextElementSibling;
+                    break;
+                default:
+                    console.error("Invalid direction.");
+                    return;
+            }
+
+            // Check if the adjacent cell exists and has a div with the class 'td-child-class'
+            if (adjacentCell) {
+                const adjacentDiv = adjacentCell.querySelector('.incell-editor-container');
+                if (adjacentDiv) {
+                    console.log(adjacentDiv);
+                    adjacentDiv.dispatchEvent(new Event('focus'));
+                    return;
+                }
+            }
+        } 
+    </script>
+    <script src="_framework/blazor.web.js"></script>
+    <script src=@Assets["_content/MudBlazor/MudBlazor.min.js"]></script>
+</body>
+
+</html>

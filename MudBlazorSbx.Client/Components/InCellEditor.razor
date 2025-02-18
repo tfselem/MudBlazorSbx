@@ -1,0 +1,72 @@
+﻿@inject IJSRuntime jsRuntime
+@typeparam T
+
+<div id="@containerId" @ref="ContainerReference" class="incell-editor-container" tabindex="0" @onfocus="OnContainerFocusedAsync">
+    @if (isEditorFocused)
+    {
+        <MudTextField @ref="TextFieldReference" 
+            class="incell-editor" 
+            @onkeyup="OnKeyUp"
+            @bind-Value="Value" 
+            @onblur="BlurEditor" />
+    }
+    else 
+    {
+        <span>@Value</span>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public required string Value { get; set; }
+    bool isEditorFocused = false;
+    MudTextField<string>? TextFieldReference;
+    public required RenderFragment<MudBaseInput<T>> EditTemplate { get; set; }
+    ElementReference ContainerReference;
+    Guid containerId = Guid.NewGuid();
+
+    private async void OnContainerFocusedAsync() 
+    {
+        isEditorFocused = true;
+        await Task.Delay(1);
+        if (TextFieldReference != null)
+        {
+            await TextFieldReference.FocusAsync();
+            await TextFieldReference.SelectAsync();
+        }
+    }
+
+    public void BlurEditor()
+    {
+        isEditorFocused = false;
+    }
+
+    async void OnKeyUp(KeyboardEventArgs args)
+    {
+        string direction = "";
+        if (args.Key == "Enter")
+        {
+            if (args.ShiftKey) 
+            {
+                direction = "up";
+            }
+            else 
+            {
+                direction = "down";
+            }
+        }
+        
+        if (args.Key == "Tab")
+        {
+            if (args.ShiftKey) 
+            {
+                direction = "left";
+            }
+        }
+
+        if (!string.IsNullOrEmpty(direction))
+        {
+            await jsRuntime.InvokeVoidAsync("focusAdjacentCell", containerId, direction);
+        }
+    }
+}

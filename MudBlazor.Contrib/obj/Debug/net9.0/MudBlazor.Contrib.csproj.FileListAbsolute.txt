@@ -1,0 +1,11 @@
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/bin/Debug/net9.0/MudBlazor.Contrib.deps.json
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/bin/Debug/net9.0/MudBlazor.Contrib.dll
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/bin/Debug/net9.0/MudBlazor.Contrib.pdb
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/obj/Debug/net9.0/MudBlazor.Contrib.GeneratedMSBuildEditorConfig.editorconfig
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/obj/Debug/net9.0/MudBlazor.Contrib.AssemblyInfoInputs.cache
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/obj/Debug/net9.0/MudBlazor.Contrib.AssemblyInfo.cs
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/obj/Debug/net9.0/MudBlazor.Contrib.csproj.CoreCompileInputs.cache
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/obj/Debug/net9.0/MudBlazor.Contrib.dll
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/obj/Debug/net9.0/refint/MudBlazor.Contrib.dll
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/obj/Debug/net9.0/MudBlazor.Contrib.pdb
+/Users/tfselem/dev/MudBlazorSbx/MudBlazor.Contrib/obj/Debug/net9.0/ref/MudBlazor.Contrib.dll
